@@ -26,3 +26,29 @@ module.exports.create=function(req,res){
         }
     });
 }
+
+module.exports.destroy=function(req,res){
+    Comments.findById(req.params.id,function(err,comment){
+        if(err){
+            console.log(err);
+            return;
+        }
+
+        if(comment.user==req.user.id){
+            let postId=comment.post;
+            comment.remove();
+            Post.findByIdAndUpdate(postId,{$pull:{comments:req.params.id}}, function(err,post){
+                if(err){
+                    console.log(err);
+                    return;
+                }
+
+                return res.redirect('back');
+            });
+
+
+        }else{
+            res.redirect('back');
+        }
+    })
+}
