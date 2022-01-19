@@ -4,6 +4,12 @@
     <%- include('_header') -%>
     <div>
         <h1> Codeial Home Page!! Welcome !!</h1>
+        <section>
+            <form action="/posts/create" method="POST">
+                <textarea name="content" id="" cols="30" rows="5" placeholder="Type Here.."></textarea>
+                <input type="submit" value="POST">
+            </form>
+        </section>
     </div>
     <%- include('_footer') -%>
 </body>
