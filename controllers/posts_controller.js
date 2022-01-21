@@ -1,17 +1,29 @@
 const Post=require('../models/post');
 const Comment=require('../models/comments');
-module.exports.create=function(req,res){
-    Post.create({
+module.exports.create= async function(req,res){
+   try{
+    let post=  await Post.create({
         content:req.body.content,
         user:req.user._id
-    },function(err,post){
-        if(err){
-            console.log("Error in creating post",err);
-            return res.redirect('back');
-        }
-        return res.redirect('back');
-
     });
+    
+    if(req.xhr){
+        return res.status(200).json({
+            data: {
+                post:post
+            },
+            message:'Post Created'
+        });
+    }
+    
+     return res.redirect('back');
+   }
+   catch{
+       console.log(err);
+       res.redirect('back');
+   }
+
+
 
 }
 

@@ -30,6 +30,7 @@ app.use(cookie_parser());
 app.set('view engine','ejs');
 app.set('views','./views');
 app.set('layout extractStyles',true);
+app.set('layout extractScripts',true);
 
 app.use(session({
     name:'codeial',
