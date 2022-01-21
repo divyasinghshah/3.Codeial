@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/noty/3.1.4/noty.css" integrity="sha512-NXUhxhkDgZYOMjaIgd89zF2w51Mub53Ru3zCNp5LTlEzMbNNAjTjDbpURYGS5Mop2cU4b7re1nOIucsVlrx9fA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/noty/3.1.4/noty.min.js" integrity="sha512-lOrm9FgT1LKOJRUXF3tp6QaMorJftUjowOWiDcG5GFZ/q7ukof19V0HKx/GWzXCdt9zYju3/KhBNdCLzK8b90Q==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <link rel="stylesheet" href="/css/layout.css">
     <%- style -%>
     <title>Document</title>
@@ -11,10 +13,7 @@
 <body>
     <header>
         This is the header!!
-        <% if(flash.success && flash.success.length>0){ %>
-            <h5><%= flash.success %> </h5>
-
-       <% } %>
+        
     </header>
 
     <%- body -%>
@@ -23,4 +22,18 @@
         This is the footer!!
     </footer>
 </body>
+
+<script>
+    <% if(flash.success && flash.success.length>0){ %>
+          new Noty({
+              theme:'relax',
+              text:'<%= flash.success %>',
+              type:'success',
+              layout:'toRight',
+              timeout:1500
+          }).show();
+
+       <% } %>
+
+</script>
 </html>
