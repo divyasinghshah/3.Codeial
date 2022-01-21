@@ -11,6 +11,10 @@
 <body>
     <header>
         This is the header!!
+        <% if(flash.success && flash.success.length>0){ %>
+            <h5><%= flash.success %> </h5>
+
+       <% } %>
     </header>
 
     <%- body -%>
