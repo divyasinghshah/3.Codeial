@@ -15,6 +15,7 @@ const { Session } = require('express-session');
 const sassMiddleware=require('node-sass-middleware');
 const flash=require('connect-flash');
 const customMidware=require('./config/middleware');
+const passportGoogle=require('./config/passport-google-oauth2-strategy');
 
 app.use(sassMiddleware({
     src:'./assets/scss',
