@@ -9,6 +9,7 @@ const User=require('./models/user');
 const session=require('express-session');
 const passport=require('passport');
 const passportLocal=require('./config/passport-local-strategy');
+const passportJWT=require('./config/passport-jwt-stratetegy');
 const { Session } = require('express-session');
 // const MongoStore=require('connect-mongo');
 const sassMiddleware=require('node-sass-middleware');
